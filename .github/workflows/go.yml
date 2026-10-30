@@ -33,3 +33,12 @@ jobs:
       - name: List dir
         shell: cmd
         run: dir /S ${{github.workspace}}
+
+      - name: Upload executable
+        uses: actions/upload-artifact@v7
+        with:
+          name: mp4ff-decrypt
+          path: ${{ github.workspace }}\cmd\mp4ff-decrypt\mp4ff-decrypt.exe
+          if-no-files-found: error
+          retention-days: 1
+          include-hidden-files: true
